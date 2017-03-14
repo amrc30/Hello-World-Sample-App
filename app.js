@@ -1,21 +1,26 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
+var myApp = angular.module('myApp', ['ui.router', 'ngResource']);
 
-myApp.config(function ($routeProvider) {
+myApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    $routeProvider
+$urlRouterProvider.otherwise('/home');
+    
+    $stateProvider
 
-        .when('/', {
+    .state('home', {
+        url:'/home',
         templateUrl: 'pages/city.html',
         controller: 'cityController'
     })
-    .when('/forecast', {
+    .state('forecast', {
+        url:'/forecast/:days',
         templateUrl: 'pages/forecast.html',
         controller: 'forecastController'
     })
-     .when('/forecast/:days', {
-         templateUrl: 'pages/forecast.html',
-         controller: 'forecastController'
-     })
+    .state('about',{
+        url:'/about',
+        templateUrl: 'pages/about.html',
+        controller: 'aboutCtrl'
+    })
 });
 myApp.service('cityService', function () {
     this.city = "New York, NY";
@@ -28,9 +33,9 @@ myApp.controller('cityController', ['$scope', 'cityService', function ($scope, c
     })
 
 }]);
-myApp.controller('forecastController', ['$scope', 'cityService', '$resource', '$routeParams', function ($scope, cityService, $resource, $routeParams) {
+myApp.controller('forecastController', ['$scope', 'cityService', '$resource', '$stateParams', function ($scope, cityService, $resource, $stateParams) {
     $scope.city = cityService.city;
-    $scope.days = $routeParams.days || '7';
+    $scope.days = $stateParams.days || '7';
     $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?q=London&&cnt=2/APPID=278b30a4edae77c0093cdd234aba9e68",
       { callback: "JSON_CALLBACK" }, { get: { method: "JSONP" } });
     $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days });
@@ -43,3 +48,8 @@ myApp.controller('forecastController', ['$scope', 'cityService', '$resource', '$
     
     
 }]);
+
+myApp.controller('aboutCtrl', function($scope){
+    $scope.app = 'Plug. Give. Get.';
+    $scope.info = 'Talk about what matters to you and create your pickboxx today.'
+})

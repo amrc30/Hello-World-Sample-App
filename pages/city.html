@@ -6,13 +6,13 @@
     <title></title>
 </head>
 <body>
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3">    
     <h4>Forecast by City</h4>
     <div class="row">
         <div class="form-group">
-            <input type="text" ng-model="city"class="form-control" />
+            <input type="text" ng-model="city" class="form-control" />
         </div>
-        <a href="#/forecast" class="btn btn-primary">Get Forecast</a>
+        <a ui-sref="forecast({days: 'days'})" class="btn btn-primary">Get Forecast</a>
     </div>
     </div>
 </body>

@@ -4,7 +4,7 @@ myApp.directive('forecastDirective', function () {
         templateUrl: 'directives/forecastDirective.html',
         scope: {
             info: '=',
-            convertStandard: '&',
+            convertStandardFunc: '&',
             covertDate: '&',
             dateformat: '@'
 
