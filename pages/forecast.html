@@ -2,17 +2,17 @@
     <a href="#/">Back to Search</a>
 
     </p>
-    Forecast for London, GB
+    Forecast for {{city}}
 <hr />
-Days:<a ui-sref="forecast({days: 2})" ng-class="{'bg-primary': days === '2'}">2</a> |
-<a ui-sref="forecast({days: 5})" ng-class="{'bg-primary': days === '5'}">5</a> |
-<a ui-sref="forecast({days: 7})" ng-class="{'bg-primary': days === '7'}">7</a>
+Days:<a ui-sref="forecast({days: 2})" ng-class="{'bg-primary': days === 2}">2</a> |
+<a ui-sref="forecast({days: 5})" ng-class="{'bg-primary': days === 5}">5</a> |
+<a ui-sref="forecast({days: 7})" ng-class="{'bg-primary': days === 7}">7</a>
 <hr />
-records: {{info.list.length}}
-<div ng-repeat="weather in details.list">
+Results:
+<div ng-repeat="x in weatherResult.list">
     <div class="row">
         <div class="col-md-12">
-            <forecast-directive info="weather" convert-standard-func="convertCelsius(dayTemp)" convert-date="convertDate(dt)" date-format="MMM d y"></forecast-directive>
+            <forecast-directive info="x" convert-standard-func="convertCelsius(dayTemp)" convert-date="convertDate(dt)" date-format="MMM d y"></forecast-directive>
         </div>
     </div>
 </div>

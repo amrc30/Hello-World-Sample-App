@@ -33,12 +33,16 @@ myApp.controller('cityController', ['$scope', 'cityService', function ($scope, c
     })
 
 }]);
-myApp.controller('forecastController', ['$scope', 'cityService', '$resource', '$stateParams', function ($scope, cityService, $resource, $stateParams) {
+myApp.controller('forecastController', ['$scope', '$http', 'cityService', '$resource', '$stateParams', function ($scope, $http, cityService, $resource, $stateParams) {
     $scope.city = cityService.city;
-    $scope.days = $stateParams.days || '7';
-    $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?q=London&&cnt=2/APPID=278b30a4edae77c0093cdd234aba9e68",
-      { callback: "JSON_CALLBACK" }, { get: { method: "JSONP" } });
-    $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days });
+    $scope.days = $stateParams.days || 7;
+    // $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?APPID=bd998e51b51f2303063756c93a3e3161&q=London&cnt=2",
+    //   { callback: "JSON_CALLBACK" }, { get: { method: "JSONP" } });
+    // $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days });
+    $http({method: 'GET',
+           url:'http://api.openweathermap.org/data/2.5/forecast/daily?APPID=bd998e51b51f2303063756c93a3e3161&q='+$scope.city+'&cnt='+$scope.days}).then( function (response){
+        $scope.weatherResult = response.data;
+    })
     $scope.convertCelsius = function (degK) {
         return Math.round(degK - 273.15);
     }
