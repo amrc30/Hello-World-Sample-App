@@ -16,11 +16,6 @@ $urlRouterProvider.otherwise('/home');
         templateUrl: 'pages/forecast.html',
         controller: 'forecastController'
     })
-    .state('about',{
-        url:'/about',
-        templateUrl: 'pages/about.html',
-        controller: 'aboutCtrl'
-    })
 });
 myApp.service('cityService', function () {
     this.city = "New York, NY";

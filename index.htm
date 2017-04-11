@@ -1,50 +1,87 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us" ng-app="myApp">
-    <head>
-        <title>AngularJS Weather Forecast SPA</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta charset="UTF-8">
 
-        <!-- load bootstrap and fontawesome via CDN -->
-        <link rel="stylesheet" href="bootstrap.css" />
-        <script src="jquery-3.1.1.js"></script>
-        <script src="bootstrap.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <style>
-            html, body, input, select, textarea
-            {
-                font-size: 1.05em !important;
-            }
-        </style>
+<head>
+    <title>AngularJS Weather Forecast SPA</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="bootstrap.css" />
+    <script src="jquery-3.1.1.js"></script>
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        html,
+        body,
+        input,
+        select,
+        textarea {
+            font-size: 1.05em !important;
+        }
         
-        <!-- load angular via CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.js"></script>
-        <script src="app.js"></script>
-        <script src="Directives/forecastDirective.js"></script>
-    
-    </head>
-    <body>
+        .bckg {
+            background-image: url('http://gzhaixier.com/data/out/254/44759676-weather-wallpaper.png');
+            background-size: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+        }
+        
+        #name {
+            font-size: 200%;
+        }
+        
+        .bckgim {
+            background-image: url('https://cdn.shopify.com/s/files/1/0071/5032/products/world-hema-political-map.jpg?v=1476239385');
+            background-size: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+    </style>
 
-        <header>
-			<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">AngularJS weather</a>
-				</div>
+    <!-- load angular via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <script src="Directives/forecastDirective.js"></script>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a ui-sref="home"><i class="fa fa-home"></i>Home</a></li>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">AngularJS weather</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="home"><i class="fa fa-home"></i>Home</a></li>
                     <li><a ui-sref="about"><i class="fa fa-info-circle"></i>About</a></li>
-				</ul>
-			</div>
-		</header>
+                </ul>
+            </div>
+    </header>
 
-        <div>
-          
-            <div ui-view></div>
+    <div>
 
-		</div>
-    </body>
+        <div ui-view></div>
+
+    </div>
+</body>
+
 </html>
